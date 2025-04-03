@@ -24,6 +24,7 @@ jobs:
   style-and-setup:
     name: Style and Setup
     runs-on: ubuntu-latest
+    needs: tests
 
     steps:
       - name: Check out code
@@ -35,4 +36,6 @@ jobs:
           go-version: "1.23.0"
           
       - name: Style
-        run: test -z $(go fmt ./...)
+        run: |
+          go fmt ./...
+          test -z "$(git status --porcelain)" || (echo "Code is not formatted" && exit 1)
