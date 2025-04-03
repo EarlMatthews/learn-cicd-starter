@@ -5,11 +5,11 @@ import (
 	"testing"
 )
 
-func TestGetAPIKey(t *testing.T)  {
+func TestGetAPIKey(t *testing.T) {
 	testCases := []struct {
-    headers   http.Header
-    expected  string
-    expectErr bool
+		headers   http.Header
+		expected  string
+		expectErr bool
 	}{
 		{
 			headers:   http.Header{},
@@ -18,13 +18,13 @@ func TestGetAPIKey(t *testing.T)  {
 		},
 	}
 
-	for _, tc := range testCases{
+	for _, tc := range testCases {
 		got, error := GetAPIKey(tc.headers)
-		if !(got == tc.expected){
+		if !(got == tc.expected) {
 			t.Errorf("Didn't get expected output")
 		}
-		if error != nil && tc.expectErr == false{
+		if error != nil && tc.expectErr == false {
 			t.Errorf("Expected error")
-		} 
+		}
 	}
 }
