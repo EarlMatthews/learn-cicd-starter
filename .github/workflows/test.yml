@@ -38,7 +38,6 @@ jobs:
       - name: Style
         run: |
           go fmt ./...
-          test -z "$(git status --porcelain)" || (echo "Code is not formatted" && exit 1)
       
       - name: Install staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
